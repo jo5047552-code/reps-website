@@ -1,539 +1,536 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Reps Website</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Reps is the training app for orthopedic and sports medicine device sales: anatomy, instruments, a timed surgery case sim and interview prep.">
+<meta property="og:title" content="Reps: be the rep the surgeon asks for">
+<meta property="og:description" content="Training for orthopedic and sports medicine device sales.">
+<meta property="og:image" content="icon-512.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>Reps | Training for orthopedic device sales</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" content="#0B1433">
 <link rel="icon" type="image/png" href="icon-180.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: night-navy stage, one bold gradient hero with a live phone, then alternating copy/visual bands; white "work surfaces" only inside the phone and product tiles, like the app itself. */
+/* Layout: 12-column grid on a ruled "preference card" system. Night-navy and sterile-paper bands alternate;
+   condensed Archivo for headlines, Plex Mono for the field labels a rep reads all day (CASE, OR, REF, TIME).
+   Violet is the one accent: primary action, active state, the odd highlight. Corners stay nearly square. */
 :root{
-  --navy:#0B1433; --navy-deep:#060C24; --navy-2:#111C45; --line:#1F2C5C; --line-2:#2B3A72;
-  --fg:#FFFFFF; --soft:#B9C3E8; --dim:#8590BB;
-  --violet:#5B3CF5; --violet-2:#A193FF; --magenta:#D02A7A;
-  --emerald:#10B981; --cyan:#22C3EE; --amber:#FFB020; --hot:#FF6A3D; --bad:#FF8592;
-  --paper:#FFFFFF; --paper-2:#F3F4FB; --ink:#0D1530; --ink-muted:#4E5877; --paper-line:#E0E4F2;
-  --grad:linear-gradient(120deg,#5B3CF5 0%,#8F35E8 55%,#D02A7A 100%);
-  --grad-go:linear-gradient(90deg,#10B981,#22C3EE);
-  --grad-hot:linear-gradient(135deg,#FFC23D,#FF6A3D);
-  --display:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --navy:#0B1433; --navy-2:#101A40; --navy-3:#17224F; --rule-d:#25315F; --on-d:#F3F4FB; --on-d-2:#AEB8DE; --on-d-3:#7E89B4;
+  --paper:#EEF0F6; --paper-2:#E3E6EF; --card:#FFFFFF; --ink:#0D1530; --ink-2:#4A5373; --rule-l:#C9CEDD;
+  --violet:#5B3CF5; --violet-ink:#4126D9; --violet-lt:#A99CFF; --magenta:#D02A7A; --amber:#FFB020; --emerald:#0E9F6E; --red:#C62839;
+  --cta:linear-gradient(100deg,#5B3CF5 0%,#8F35E8 60%,#D02A7A 100%);
+  --display:'Archivo','Arial Narrow',system-ui,sans-serif;
   --body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --ease:cubic-bezier(.2,.9,.3,1);
+  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --r:4px;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
-body{margin:0;background:var(--navy);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy-deep)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--navy);color:var(--on-d);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy)}
+img{max-width:100%;display:block}
 a{color:inherit}
-img{max-width:100%}
-.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.wide{font-stretch:125%;font-weight:800;letter-spacing:-.015em}
-.num{font-variant-numeric:tabular-nums}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
-p{margin:0}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet-2)}
-:focus-visible{outline:3px solid var(--violet-2);outline-offset:3px;border-radius:6px}
+p,h1,h2,h3,ul,ol,dl,dd,figure{margin:0}
+:focus-visible{outline:2px solid var(--violet-lt);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.mono{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.cond{font-family:var(--display);font-stretch:72%;font-weight:800;letter-spacing:-.01em;line-height:.92;text-wrap:balance}
+.paper{background:var(--paper);color:var(--ink)}
+.paper .mono{color:var(--ink-2)}
+.band{padding-block:112px}
+@media (max-width:760px){.band{padding-block:72px}}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border-radius:14px;font:800 16px var(--body);text-decoration:none;cursor:pointer;border:0;transition:transform .15s var(--ease),box-shadow .2s}
-.btn.primary{background:var(--grad);color:#fff;box-shadow:0 12px 28px -10px rgba(143,53,232,.75)}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(143,53,232,.9)}
-.btn.ghost{background:transparent;color:#fff;border:1.5px solid var(--line-2)}
-.btn.ghost:hover{border-color:var(--violet-2)}
-.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:var(--r);font:700 16px var(--body);text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:background-position .4s,border-color .2s,color .2s}
+.btn.go{background:var(--cta);background-size:160% 100%;color:#fff}
+.btn.go:hover{background-position:100% 0}
+.btn.line{border-color:currentColor;background:transparent}
+.btn.line:hover{color:var(--violet-lt)}
+.paper .btn.line:hover{color:var(--violet-ink)}
+.btn .arr{font-family:var(--mono);font-weight:500}
 
 /* header */
-.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(6,12,36,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.hdr .wrap{display:flex;align-items:center;gap:24px;min-height:68px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:22px}
-.logo img{width:36px;height:36px;border-radius:9px}
-.hdr nav{display:flex;gap:26px;margin-left:auto;font-size:15px;font-weight:600}
-.hdr nav a{text-decoration:none;color:var(--soft)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy);border-bottom:1px solid var(--rule-d)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;min-height:64px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 21px var(--display);font-stretch:125%;letter-spacing:-.01em}
+.mark img{width:32px;height:32px;border-radius:7px}
+.hdr nav{display:flex;gap:28px;margin-left:auto}
+.hdr nav a{text-decoration:none;color:var(--on-d-2)}
 .hdr nav a:hover{color:#fff}
-.hdr .btn{min-height:42px;padding:0 18px;font-size:15px;border-radius:12px}
-@media (max-width:820px){.hdr nav{display:none}.hdr .btn{margin-left:auto}}
+.hdr .btn{min-height:40px;padding:0 16px;font-size:14px}
+@media (max-width:900px){.hdr nav{display:none}.hdr .btn{margin-left:auto}}
 
 /* hero */
-.hero{position:relative;overflow:hidden;padding-block:72px 88px}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:780px;height:780px;border-radius:50%;background:radial-gradient(closest-side,rgba(116,88,255,.42),transparent);pointer-events:none}
-.hero::after{content:"";position:absolute;left:-200px;bottom:-260px;width:620px;height:620px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,94,58,.16),transparent);pointer-events:none}
-.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
-.hero h1{font-size:clamp(44px,7vw,84px);line-height:.98;margin:18px 0 22px}
-.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .lede{font-size:clamp(18px,2vw,21px);color:var(--soft);max-width:34em}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hero .fine{margin-top:16px;font-size:14px;color:var(--dim)}
-.pill{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--soft);background:var(--navy-2);border:1px solid var(--line-2);border-radius:999px;padding:6px 14px 6px 8px}
-.pill i{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--grad-hot);align-items:center;justify-content:center}
-.pill i svg{width:13px;height:13px;stroke:#1A1300;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:900px){.hero{padding-block:48px 64px}.hero .wrap{grid-template-columns:minmax(0,1fr);gap:56px}}
+.hero{padding-block:64px 0;border-bottom:1px solid var(--rule-d)}
+.hero .grid{align-items:start}
+.hero-copy{grid-column:1/span 6;padding-top:24px;display:flex;flex-direction:column;gap:28px}
+.hero-copy .mono{color:var(--violet-lt)}
+.hero h1{font-size:clamp(56px,8.4vw,118px);text-transform:uppercase}
+.hero h1 span{color:var(--violet-lt)}
+.lede{font-size:clamp(18px,1.7vw,20px);color:var(--on-d-2);max-width:31em}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.board{margin-top:20px;border-top:1px solid var(--rule-d)}
+.board caption{caption-side:top;text-align:left;padding:14px 0 10px;color:var(--on-d-3)}
+.board table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px}
+.board td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule-d);vertical-align:top;color:var(--on-d-2)}
+.board td:first-child{color:var(--amber);font-weight:600;width:64px;font-variant-numeric:tabular-nums}
+.board td.proc{color:var(--on-d)}
+.board td:last-child{text-align:right;white-space:nowrap}
+.hero-shots{grid-column:8/span 5;position:relative;height:640px}
+.phone{position:absolute;width:290px;border-radius:38px;padding:9px;background:#02040F;box-shadow:0 0 0 1px #2A3566,0 30px 60px -24px rgba(0,0,0,.8)}
+.phone img{border-radius:30px;width:100%;height:auto}
+.hero-shots .back{right:0;top:0;opacity:.9}
+.hero-shots .front{left:0;top:90px}
+.callout{position:absolute;right:calc(100% - 4px);display:flex;flex-direction:row-reverse;align-items:center;gap:10px;color:var(--on-d-2);white-space:nowrap}
+.callout::before{content:"";width:40px;height:1px;background:var(--amber)}
+.callout b{color:var(--amber);font-weight:600}
+.c1{top:470px}
+.c2{top:255px}
+@media (max-width:1100px){.c1,.c2{display:none}}
+@media (max-width:980px){
+  .hero-copy{grid-column:1/-1}
+  .hero-shots{grid-column:1/-1;height:560px;margin-top:48px;max-width:560px;width:100%;justify-self:center}
+  .phone{width:250px}
+}
+@media (max-width:520px){
+  .hero-shots{height:470px}
+  .phone{width:min(210px,56vw)}
+  .hero-shots .front{top:70px}
+  .board td:last-child{display:none}
+}
 
-/* phone mockup */
-.phone{position:relative;justify-self:center;width:min(340px,100%);aspect-ratio:340/690;max-width:100%;border-radius:48px;background:#02040F;padding:12px;box-shadow:0 0 0 2px #26325f,0 40px 80px -20px rgba(0,0,0,.7),0 0 120px -20px rgba(143,53,232,.45);transform:rotate(2.5deg)}
-.phone .scr{position:relative;height:100%;border-radius:38px;overflow:hidden;background:var(--navy);display:flex;flex-direction:column}
-.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:96px;height:26px;border-radius:14px;background:#02040F;z-index:2}
-.ph-top{padding:46px 18px 12px;display:flex;flex-direction:column}
-.ph-top small{font-size:12px;color:var(--soft);font-weight:500}
-.ph-top b{font-size:26px;line-height:1.05}
-.ph-sheet{flex:1;background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;padding:14px 14px 0;display:flex;flex-direction:column;gap:10px;overflow:hidden}
-.mcard{background:var(--grad);color:#fff;border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
-.mcard .r1{display:flex;justify-content:space-between;align-items:center;font-size:12px}
-.mcard .tier{background:#fff;color:var(--ink);font-weight:800;border-radius:999px;padding:2px 10px;font-size:11px}
-.mcard .bar{height:7px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden}
-.mcard .bar i{display:block;height:100%;width:62%;background:var(--grad-go);border-radius:4px;animation:fill 1.6s var(--ease) both .4s}
-.mcard .r2{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;border-top:1px solid rgba(255,255,255,.22);padding-top:8px}
-.flame{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--amber);align-items:center;justify-content:center;flex:none}
-.flame svg{width:12px;height:12px;fill:none;stroke:#1A1300;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.days{display:flex;gap:4px;margin-left:auto}
-.days i{width:9px;height:9px;border-radius:50%;background:var(--amber)}
-.days i.off{background:transparent;border:1.5px solid rgba(255,255,255,.5)}
-@keyframes fill{from{width:0}}
-.rdy{display:flex;align-items:center;gap:12px;border:1.5px solid var(--paper-line);border-radius:16px;padding:10px 12px}
-.rdy svg{width:52px;height:52px;flex:none;transform:rotate(-90deg)}
-.rdy circle{fill:none;stroke-width:7}
-.rdy .tr{stroke:var(--paper-line)}
-.rdy .fg{stroke:url(#gogr);stroke-linecap:round;stroke-dasharray:138;stroke-dashoffset:36;animation:ring 1.6s var(--ease) both .6s}
-@keyframes ring{from{stroke-dashoffset:138}}
-.rdy div{display:flex;flex-direction:column;font-size:12px;color:var(--ink-muted)}
-.rdy div b{font-size:15px;color:var(--ink)}
-.mrow{display:flex;align-items:center;gap:10px;border:1.5px solid var(--paper-line);border-radius:14px;padding:9px 11px}
-.mrow .n{width:28px;height:28px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:var(--paper-2);color:var(--ink)}
-.mrow.done .n{background:#0B8A5C;color:#fff}
-.mrow.next{border-color:#5038F0;background:#EEEBFF}
-.mrow.next .n{background:#5038F0;color:#fff}
-.mrow .t{flex:1;min-width:0;display:flex;flex-direction:column;font-size:11px;color:var(--ink-muted)}
-.mrow .t b{font-size:13px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mrow .mb{height:5px;border-radius:3px;background:var(--paper-line);margin-top:4px;overflow:hidden}
-.mrow .mb i{display:block;height:100%;background:var(--grad-go)}
-.ph-nav{background:var(--navy);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 8px 16px;font-size:9px;color:var(--soft);text-align:center}
-.ph-nav span{display:flex;flex-direction:column;align-items:center;gap:3px}
-.ph-nav span i{width:34px;height:20px;border-radius:10px;display:block;border:1.5px solid currentColor;opacity:.5}
-.ph-nav span.on{color:#fff;font-weight:800}
-.ph-nav span.on i{background:#fff;border-color:#fff;opacity:1}
-@media (prefers-reduced-motion:reduce){.phone{transform:none}*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* numbers */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--rule-d)}
+.facts div{padding:28px 24px 30px;border-left:1px solid var(--rule-d);display:flex;flex-direction:column;gap:8px}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts b{font:800 clamp(48px,6vw,76px)/.9 var(--display);font-stretch:72%;font-variant-numeric:tabular-nums}
+.facts .mono{color:var(--on-d-3)}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.facts div:nth-child(3){border-left:0;padding-left:0}.facts div:nth-child(-n+2){border-bottom:1px solid var(--rule-d)}}
 
-/* proof strip */
-.strip{border-block:1px solid var(--line);background:var(--navy-deep)}
-.strip .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-block:28px}
-.strip div{display:flex;flex-direction:column;gap:2px;padding:0 20px;border-left:1px solid var(--line)}
-.strip div:first-child{border-left:0;padding-left:0}
-.strip b{font-size:clamp(32px,4vw,44px);line-height:1}
-.strip span{font-size:15px;color:var(--soft)}
-@media (max-width:700px){.strip .wrap{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 0}.strip div:nth-child(3){border-left:0;padding-left:0}}
+/* section heads */
+.sec-h{grid-column:1/span 5;display:flex;flex-direction:column;gap:20px}
+.sec-h h2{font-size:clamp(44px,5.6vw,78px);text-transform:uppercase}
+.sec-h p{font-size:18px;max-width:30em}
+.paper .sec-h p{color:var(--ink-2)}
+.dark .sec-h p{color:var(--on-d-2)}
+.num-tag{display:flex;gap:14px;align-items:baseline;border-top:2px solid currentColor;padding-top:10px}
+.num-tag span:last-child{margin-left:auto}
+@media (max-width:560px){.num-tag span:last-child{display:none}}
 
-/* sections */
-section.band{padding-block:96px}
-.sh{display:flex;flex-direction:column;gap:14px;max-width:44em;margin-bottom:48px}
-.sh h2{font-size:clamp(32px,4.4vw,52px);line-height:1.04}
-.sh p{font-size:19px;color:var(--soft)}
-@media (max-width:700px){section.band{padding-block:64px}}
+/* sim */
+.sim .grid{row-gap:56px}
+.sim .sec-h{grid-column:1/span 5}
+.sim-demo{grid-column:7/span 6}
+.sim-notes{grid-column:1/span 5;display:flex;flex-direction:column;border-top:1px solid var(--rule-l)}
+.sim-notes li{list-style:none;display:grid;grid-template-columns:88px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule-l);font-size:16px;color:var(--ink-2)}
+.sim-notes li b{color:var(--ink);display:block;font-size:17px}
+.sim-notes{padding:0}
+.sim-shots{grid-column:7/span 6;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.sim-shots figure{display:flex;flex-direction:column;gap:10px}
+.sim-shots .phone{position:static;width:100%;max-width:280px;box-shadow:0 24px 48px -28px rgba(13,21,48,.6)}
+.sim-shots figure:nth-child(2){margin-top:64px}
+.sim-shots figcaption{color:var(--ink-2)}
+@media (max-width:980px){.sim .sec-h,.sim-demo,.sim-notes,.sim-shots{grid-column:1/-1}}
 
-/* inside the app: feature grid */
-.feats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
-.feat{grid-column:span 2;background:var(--navy-2);border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .2s,transform .2s var(--ease)}
-.feat:hover{border-color:var(--line-2);transform:translateY(-3px)}
-.feat.lg{grid-column:span 3}
-.feat h3{font-size:23px;line-height:1.15}
-.feat p{color:var(--soft);font-size:16px}
-.ficon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--grad)}
-.ficon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ficon.go{background:var(--grad-go)} .ficon.hot{background:var(--grad-hot)} .ficon.hot svg{stroke:#1A1300}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
-.tags span{font-size:13px;font-weight:600;color:var(--soft);border:1px solid var(--line-2);border-radius:999px;padding:3px 11px}
-.modlist{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;font-size:14px;color:var(--soft)}
-.modlist li{display:flex;gap:8px;min-width:0}
-.modlist li b{color:var(--violet-2);font-variant-numeric:tabular-nums;flex:none}
-@media (max-width:900px){.feat,.feat.lg{grid-column:span 3}}
-@media (max-width:640px){.feats{grid-template-columns:minmax(0,1fr)}.feat,.feat.lg{grid-column:auto}.modlist{grid-template-columns:minmax(0,1fr)}}
+.case{background:var(--card);border:1px solid var(--rule-l);border-radius:var(--r);box-shadow:0 1px 0 var(--rule-l),0 30px 60px -40px rgba(13,21,48,.45)}
+.case-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:18px 20px 14px;border-bottom:1px solid var(--rule-l)}
+.case-top .mono{color:var(--ink-2)}
+.case-top h3{font:800 26px/1 var(--display);font-stretch:85%;margin-top:6px}
+.clock{font:600 30px/1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.sched{display:block;margin-top:6px;text-align:right;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--emerald)}
+.sched.late{color:var(--red)}
+.scene{padding:16px 20px;background:var(--navy);color:var(--on-d);font-size:17px;line-height:1.45}
+.scene .mono{color:var(--on-d-3);display:block;margin-bottom:6px}
+.opts{display:flex;flex-direction:column;padding:16px 20px 20px;gap:8px}
+.opts .q{font-weight:700;margin-bottom:4px}
+.opt{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;text-align:left;width:100%;font:500 16px/1.4 var(--body);color:var(--ink);background:var(--card);border:1px solid var(--rule-l);border-radius:var(--r);padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt .k{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink-2);padding-top:1px}
+.opt:not(:disabled):hover{border-color:var(--violet);background:#F6F4FF}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--emerald);background:#EAF7F1}
+.opt.wrong{border-color:var(--red);background:#FCEDEF}
+.opt.dim{opacity:.45}
+.fb{border-top:1px solid var(--rule-l);padding:16px 20px 18px;display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--ink-2)}
+.fb[hidden]{display:none}
+.fb h4{margin:0;font:800 20px/1.1 var(--display);font-stretch:85%;color:var(--ink);display:flex;gap:10px;align-items:center}
+.fb h4 .pen{font:600 12px var(--mono);color:#fff;background:var(--red);padding:3px 8px;border-radius:3px}
+.fb.ok h4 .pen{background:var(--emerald)}
+.tip{border-left:2px solid var(--violet);padding:2px 0 2px 12px;color:var(--ink)}
+.tip b{color:var(--violet-ink)}
+.again{align-self:flex-start;font:600 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--violet-ink);background:none;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
 
-/* sim demo */
-.sim{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%)}
-.simgrid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:center}
-.simgrid .sh{margin-bottom:0}
-.checks{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
-.checks li{display:flex;gap:12px;font-size:17px;color:var(--soft)}
-.checks li b{color:#fff}
-.checks svg{width:22px;height:22px;flex:none;margin-top:2px;stroke:var(--emerald);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.demo{background:var(--paper);color:var(--ink);border-radius:28px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
-.dhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.dhead div{display:flex;flex-direction:column}
-.dhead small{font-size:13px;font-weight:600;color:var(--ink-muted)}
-.dhead b{font-size:19px;line-height:1.2}
-.clock{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;font-stretch:125%}
-.road{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
-.road i{height:7px;border-radius:4px;background:var(--paper-line)}
-.road i.past{background:#0B8A5C} .road i.on{background:#5038F0}
-.say{display:flex;gap:10px;align-items:flex-start;background:var(--paper-2);border-left:6px solid var(--navy);border-radius:8px 16px 16px 8px;padding:10px 12px}
-.av{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
-.say div{display:flex;flex-direction:column}
-.say small{font-size:12px;color:var(--ink-muted);font-weight:700}
-.say span{font-size:16px;font-weight:600;line-height:1.4}
-.ask{font-size:16px;font-weight:800}
-.tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;font:700 14px/1.25 var(--body);color:var(--ink);background:#fff;border:3px solid var(--paper-line);border-radius:16px;padding:10px;cursor:pointer;min-width:0;transition:border-color .2s,transform .15s}
-.tool:not(:disabled):hover{border-color:#5038F0}
-.tool:disabled{cursor:default}
-.tool .ti{width:100%;height:56px;border-radius:10px;background:var(--paper-2);display:flex;align-items:center;justify-content:center}
-.tool .ti svg{width:80%;height:40px;fill:none;stroke:#4E5877;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.tool.right{border-color:#0B8A5C;animation:pop .4s cubic-bezier(.2,.9,.3,1.4)}
-.tool.wrong{border-color:#C62839;animation:shake .45s}
-.tool.dim{opacity:.5}
-@keyframes pop{50%{transform:scale(1.05)}}
-@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
-.fbk{border-radius:16px;padding:12px 14px;font-size:15px;line-height:1.45;background:var(--paper-2);border-left:6px solid var(--paper-line);min-height:72px}
-.fbk b{display:block;font-size:16px;margin-bottom:2px}
-.fbk.good{border-left-color:#0B8A5C;background:#E7F6EF} .fbk.good b{color:#0B7F55}
-.fbk.bad{border-left-color:#C62839;background:#FDECEE} .fbk.bad b{color:#C62839}
-.reset{align-self:flex-start;border:0;background:none;color:#5038F0;font:700 14px var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 0}
-@media (max-width:900px){.simgrid{grid-template-columns:minmax(0,1fr);gap:40px}}
-@media (max-width:460px){.tray{grid-template-columns:minmax(0,1fr)}.tool{flex-direction:row;align-items:center}.tool .ti{width:72px;flex:none}}
+/* course */
+.course .grid{row-gap:56px}
+.course .sec-h{grid-column:1/span 4}
+.toc{grid-column:6/span 7;list-style:none;padding:0;columns:2;column-gap:32px;border-top:2px solid var(--on-d)}
+.toc li{break-inside:avoid;display:grid;grid-template-columns:44px 1fr;gap:8px;padding:14px 0;border-bottom:1px solid var(--rule-d);font-size:18px;font-weight:600}
+.toc li .mono{color:var(--violet-lt);padding-top:4px}
+.toc li.free{color:#fff}
+.toc li.free::after{content:"Free";grid-column:2;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.anat{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:center;border-top:1px solid var(--rule-d);padding-top:56px}
+.anat figure{grid-column:1/span 4}
+.anat .phone{position:static;width:100%;max-width:300px}
+.anat-copy{grid-column:6/span 7;display:flex;flex-direction:column;gap:18px}
+.anat-copy h3{font-size:clamp(34px,4vw,54px);text-transform:uppercase}
+.anat-copy p{color:var(--on-d-2);max-width:34em}
+.joints{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule-d);border-radius:var(--r);align-self:flex-start}
+.joints span{padding:10px 18px;border-left:1px solid var(--rule-d)}
+.joints span:first-child{border-left:0}
+.cos{color:var(--on-d-3)}
+@media (max-width:980px){.course .sec-h,.toc,.anat figure,.anat-copy{grid-column:1/-1}.anat figure{max-width:300px}}
+@media (max-width:600px){.toc{columns:1}}
 
-/* engine */
-.engine{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.eng{border-top:3px solid var(--line-2);padding-top:20px;display:flex;flex-direction:column;gap:10px}
-.eng:nth-child(1){border-color:var(--amber)} .eng:nth-child(2){border-color:var(--violet-2)} .eng:nth-child(3){border-color:var(--emerald)}
-.eng h3{font-size:22px}
-.eng p{color:var(--soft);font-size:16px}
-.eng .k{font-size:44px;line-height:1}
-.eng:nth-child(1) .k{color:var(--amber)} .eng:nth-child(2) .k{color:var(--violet-2)} .eng:nth-child(3) .k{color:var(--emerald)}
-@media (max-width:760px){.engine{grid-template-columns:minmax(0,1fr);gap:32px}}
-
-/* who */
-.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.who div{background:var(--navy-2);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px}
-.who b{font-size:19px}
-.who p{color:var(--soft);font-size:16px}
-@media (max-width:760px){.who{grid-template-columns:minmax(0,1fr)}}
+/* career */
+.career .grid{row-gap:48px;align-items:start}
+.career .sec-h{grid-column:1/span 5}
+.steps{grid-column:1/span 5;list-style:none;padding:0;border-top:2px solid var(--ink)}
+.steps li{display:grid;grid-template-columns:44px 1fr;padding:14px 0;border-bottom:1px solid var(--rule-l);font-size:18px;font-weight:600}
+.steps .mono{padding-top:4px}
+.tools{grid-column:7/span 6;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-top:2px solid var(--ink)}
+.tools div{padding:20px 20px 22px 0;border-bottom:1px solid var(--rule-l);display:flex;flex-direction:column;gap:6px}
+.tools div:nth-child(even){padding-left:20px;border-left:1px solid var(--rule-l)}
+.tools b{font:800 24px/1.05 var(--display);font-stretch:85%}
+.tools p{color:var(--ink-2);font-size:16px}
+.career figure{grid-column:7/span 6;display:flex;gap:24px;align-items:flex-end}
+.career .phone{position:static;width:min(260px,48%)}
+.career figcaption{color:var(--ink-2);max-width:18em}
+@media (max-width:980px){.career .sec-h,.steps,.tools,.career figure{grid-column:1/-1}}
+@media (max-width:560px){.tools{grid-template-columns:minmax(0,1fr)}.tools div:nth-child(even){padding-left:0;border-left:0}}
 
 /* pricing */
-.tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
-.tier .price b{font-size:44px}
-.tier{padding:28px 22px}
-@media (max-width:1100px){.tiers{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.tier{position:relative;background:var(--navy-2);border:1px solid var(--line);border-radius:24px;padding:28px 24px;display:flex;flex-direction:column;gap:16px}
-.tier.feat-tier{background:linear-gradient(var(--navy-2),var(--navy-2)) padding-box,var(--grad) border-box;border:2px solid transparent;box-shadow:0 30px 60px -30px rgba(143,53,232,.6)}
-.tier .flag{position:absolute;top:-13px;left:24px;background:var(--grad-hot);color:#1A1300;font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px;letter-spacing:.04em;text-transform:uppercase}
-.tier h3{font-size:26px}
-.tier .price{display:flex;align-items:baseline;gap:6px}
-.tier .price b{font-size:48px;line-height:1}
-.tier .price span{color:var(--dim);font-size:15px}
-.tier>p{color:var(--soft);font-size:16px}
-.tier ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:16px}
-.tier li{display:flex;gap:10px}
-.tier li svg{width:20px;height:20px;flex:none;margin-top:2px;stroke:var(--emerald);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.tier .btn{margin-top:auto}
-@media (max-width:700px){.tiers{grid-template-columns:minmax(0,1fr);max-width:520px}}
+.pricing .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px}
+.pricing .sec-h{max-width:640px}
+.bill{display:inline-flex;border:1px solid var(--rule-l);border-radius:var(--r);padding:3px;background:var(--card)}
+.bill button{border:0;background:transparent;color:var(--ink-2);font:600 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;min-height:40px;padding:0 16px;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.bill button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.bill button em{font-style:normal;color:var(--amber)}
+.plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:1px solid var(--rule-l)}
+.plan{padding:28px 22px 28px;border-left:1px solid var(--rule-l);display:flex;flex-direction:column;gap:16px;min-width:0}
+.plan:first-child{border-left:0;padding-left:0}
+.plan.pick{background:var(--navy);color:var(--on-d);border-left-color:var(--navy);padding-left:22px;margin-top:-2px;border-top:2px solid var(--violet)}
+.plan.pick + .plan{border-left-color:transparent}
+.plan .tag{display:flex;justify-content:space-between;gap:8px}
+.plan.pick .tag .mono{color:var(--amber)}
+.plan h3{font:800 34px/1 var(--display);font-stretch:80%;text-transform:uppercase}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price b{font:800 56px/.9 var(--display);font-stretch:72%;font-variant-numeric:tabular-nums}
+.price span{font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.plan.pick .price span,.plan.pick .note{color:var(--on-d-2)}
+.note{font-size:15px;color:var(--ink-2);min-height:3em}
+.plan ul{list-style:none;padding:0;display:flex;flex-direction:column;font-size:15px}
+.plan li{padding:9px 0 9px 22px;border-top:1px solid var(--rule-l);position:relative}
+.plan.pick li{border-top-color:var(--rule-d)}
+.plan li::before{content:"";position:absolute;left:2px;top:15px;width:9px;height:5px;border-left:2px solid var(--emerald);border-bottom:2px solid var(--emerald);transform:rotate(-45deg)}
+.plan.pick li::before{border-color:var(--amber)}
+.plan .vol{font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--ink-2);border-top:1px dashed var(--rule-l);padding-top:12px}
+.plan .btn{margin-top:auto}
+@media (max-width:1080px){.plans{grid-template-columns:repeat(2,minmax(0,1fr))}.plan:nth-child(3){border-left:0;padding-left:0}.plan:nth-child(-n+2){border-bottom:1px solid var(--rule-l)}.plan.pick + .plan{border-left-color:var(--rule-l)}}
+@media (max-width:640px){.plans{grid-template-columns:minmax(0,1fr)}.plan,.plan:nth-child(3){border-left:0;padding-left:0;border-bottom:1px solid var(--rule-l)}.plan.pick{padding-left:20px;padding-right:20px;margin-inline:-20px}}
+
+/* teams */
+.teams .grid{row-gap:40px;align-items:start}
+.teams .sec-h{grid-column:1/span 5}
+.teams form{grid-column:7/span 6;display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:2px solid var(--on-d);padding-top:24px}
+.teams label{display:flex;flex-direction:column;gap:8px;min-width:0}
+.teams label .mono{color:var(--on-d-3)}
+.teams input,.teams select{font:500 16px var(--body);color:var(--on-d);background:var(--navy-2);border:1px solid var(--rule-d);border-radius:var(--r);padding:0 12px;min-height:50px;width:100%;color-scheme:dark}
+.teams input:focus,.teams select:focus{border-color:var(--violet-lt);outline:none}
+.teams .btn,.teams .msg{grid-column:1/-1}
+.msg{font-size:15px;min-height:1.5em;color:var(--on-d-2)}
+@media (max-width:980px){.teams .sec-h,.teams form{grid-column:1/-1}}
+@media (max-width:520px){.teams form{grid-template-columns:minmax(0,1fr)}}
 
 /* faq */
-.faq{display:flex;flex-direction:column;max-width:820px}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:19px;font-weight:700}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:26px;font-weight:400;color:var(--violet-2);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{padding:0 0 22px;color:var(--soft);max-width:40em}
+.faq .grid{row-gap:40px}
+.faq .sec-h{grid-column:1/span 4}
+.qa{grid-column:6/span 7;border-top:2px solid var(--ink)}
+.qa details{border-bottom:1px solid var(--rule-l)}
+.qa summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 24px;gap:16px;align-items:center;padding:20px 0;font-size:19px;font-weight:700}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";font:500 22px var(--mono);color:var(--violet-ink);text-align:right}
+.qa details[open] summary::after{content:"\2212"}
+.qa details p{padding:0 40px 22px 0;color:var(--ink-2);max-width:42em}
+@media (max-width:980px){.faq .sec-h,.qa{grid-column:1/-1}}
 
-/* closing cta */
-.cta{position:relative;overflow:hidden;background:var(--grad);border-radius:32px;padding:56px 48px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
-.cta::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:34px solid rgba(255,255,255,.12);pointer-events:none}
-.cta h2{font-size:clamp(30px,4vw,48px);line-height:1.04}
-.cta p{margin-top:10px;font-size:18px;color:rgba(255,255,255,.88)}
-.cta form{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;width:min(380px,100%)}
-.cta label{font-size:14px;font-weight:700}
-.cta .frow{display:flex;gap:8px}
-.cta input{flex:1;min-width:0;font:500 16px var(--body);color:var(--ink);background:#fff;border:0;border-radius:12px;padding:0 14px;min-height:52px}
-.cta input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-.cta button{min-height:52px;padding:0 20px;border:0;border-radius:12px;background:var(--navy-deep);color:#fff;font:800 16px var(--body);cursor:pointer}
-.cta .msg{font-size:14px;min-height:1.4em;color:#fff}
-@media (max-width:820px){.cta{grid-template-columns:minmax(0,1fr);padding:40px 24px}}
+/* closing */
+.close .grid{align-items:end;row-gap:40px}
+.close h2{grid-column:1/span 7;font-size:clamp(52px,7.4vw,104px);text-transform:uppercase}
+.close h2 span{color:var(--violet-lt)}
+.close form{grid-column:9/span 4;display:flex;flex-direction:column;gap:10px}
+.close .frow{display:flex;gap:8px}
+.close input{flex:1;min-width:0;font:500 16px var(--body);color:var(--on-d);background:var(--navy-2);border:1px solid var(--rule-d);border-radius:var(--r);padding:0 14px;min-height:52px;color-scheme:dark}
+.close input:focus{border-color:var(--violet-lt);outline:none}
+.close label{color:var(--on-d-3)}
+@media (max-width:980px){.close h2,.close form{grid-column:1/-1}}
 
-/* footer */
-footer{border-top:1px solid var(--line);margin-top:96px;padding-block:40px 48px;color:var(--dim);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:flex-start}
-footer .logo{font-size:18px;color:#fff}
-footer .logo img{width:28px;height:28px}
-footer p{max-width:44em;margin-top:12px}
-footer nav{display:flex;gap:22px;font-weight:600}
-footer nav a{text-decoration:none;color:var(--soft)}
+footer{border-top:1px solid var(--rule-d);padding-block:36px 44px;color:var(--on-d-3);font-size:14px}
+footer .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:20px}
+footer .mark{grid-column:1/span 3;color:var(--on-d);font-size:18px}
+footer .mark img{width:26px;height:26px}
+footer p{grid-column:4/span 6;max-width:44em}
+footer nav{grid-column:10/span 3;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+footer nav a{text-decoration:none;color:var(--on-d-2)}
+@media (max-width:760px){footer .mark,footer p,footer nav{grid-column:1/-1;align-items:flex-start}}
 
-/* billing toggle, teams */
-.bill{display:inline-grid;grid-auto-flow:column;gap:4px;background:var(--navy-deep);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:28px}
-.bill button{border:0;background:transparent;color:var(--soft);font:700 15px var(--body);min-height:40px;padding:0 16px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.bill button span{font-size:12px;font-weight:800;color:#1A1300;background:var(--grad-hot);border-radius:999px;padding:2px 8px}
-.bill button[aria-pressed="true"]{background:#fff;color:var(--ink)}
-.tier .vol{font-size:14px;color:var(--soft);border-top:1px solid var(--line);padding-top:14px}
-.demo-box{background:var(--navy-2);border:1px solid var(--line-2);border-radius:28px;padding:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
-.demo-box h2{font-size:clamp(28px,3.6vw,42px);line-height:1.05;margin:12px 0}
-.demo-box p{color:var(--soft)}
-.demo-box form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.demo-box label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;min-width:0}
-.demo-box input,.demo-box select{font:500 16px var(--body);color:var(--ink);background:#fff;border:0;border-radius:12px;padding:0 12px;min-height:48px;width:100%}
-.demo-box .btn,.demo-box .msg{grid-column:1/-1}
-.demo-box .msg{font-size:14px;min-height:1.4em;color:#fff}
-@media (max-width:820px){.demo-box{grid-template-columns:minmax(0,1fr);padding:28px 20px}.demo-box form{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 
+</head>
+<body>
 <header class="hdr">
   <div class="wrap">
-    <a class="logo wide" href="#top" aria-label="Reps home"><img src="icon-180.png" alt="" width="36" height="36">Reps</a>
-    <nav aria-label="Main">
-      <a href="#inside">Inside the app</a>
-      <a href="#sim">Surgery sim</a>
+    <a class="mark" href="#top"><img src="icon-180.png" alt="" width="32" height="32">Reps</a>
+    <nav class="mono" aria-label="Main">
+      <a href="#sim">The sim</a>
+      <a href="#course">Course</a>
+      <a href="#career">Career</a>
       <a href="#pricing">Pricing</a>
-      <a href="#teams-demo">For teams</a>
-      <a href="#faq">FAQ</a>
+      <a href="#teams">Teams</a>
     </nav>
-    <a class="btn primary" href="#start">Start free</a>
+    <a class="btn go" href="#start">Start free</a>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="pill"><i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Built for orthopedic and sports medicine sales</span>
-        <h1 class="wide">Walk into the OR <em>ready.</em></h1>
-        <p class="lede">Reps trains you for a career in orthopedic device sales. Learn the anatomy, the instruments and the implants, then prove it by running real arthroscopic cases step by step, the way a surgeon will expect you to.</p>
+    <div class="wrap grid">
+      <div class="hero-copy">
+        <p class="mono">Training for orthopedic &amp; sports medicine device sales</p>
+        <h1 class="cond">Be the rep the surgeon <span>asks for.</span></h1>
+        <p class="lede">Reps teaches you the anatomy, the trays, the implants and the etiquette, then puts you through a full case day before you ever walk into an OR. Twelve modules on your phone, and nine cases where the clock is running.</p>
         <div class="ctas">
-          <a class="btn primary" href="#start">Start the free preview
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn ghost" href="#sim">Try a case</a>
+          <a class="btn go" href="#start">Start free <span class="arr">&rarr;</span></a>
+          <a class="btn line" href="#sim">Run the first step</a>
         </div>
-        <p class="fine">Works on your phone. No credit card for the preview.</p>
+        <div class="board">
+          <table>
+            <caption class="mono">Tomorrow's board &middot; three of the nine sim cases</caption>
+            <tbody>
+              <tr><td>07:30</td><td class="proc">Knee scope, meniscus trim</td><td>Dr. Nguyen</td></tr>
+              <tr><td>09:45</td><td class="proc">ACL and meniscal repair</td><td>Dr. Okafor</td></tr>
+              <tr><td>12:15</td><td class="proc">ACL + MPFL reconstruction</td><td>Dr. Reyes</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="hero-shots" aria-label="Screens from the Reps app">
+        <div class="phone back"><img src="shot-anatomy.jpg" alt="Reps anatomy explorer: a Gray's Anatomy plate of the shoulder with 12 numbered markers" width="585" height="1266"></div>
+        <div class="phone front"><img src="shot-sim-arrive.jpg" alt="Reps surgery sim: step 1 of 8, you arrive 30 minutes before the first case. What do you do first?" width="585" height="1266"></div>
+        <p class="callout mono c2"><b>07:00</b> case clock</p>
+        <p class="callout mono c1"><b>4</b> calls per step</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="facts" style="margin-top:72px;border-top:1px solid var(--rule-d)">
+        <div><b>12</b><span class="mono">Course modules</span></div>
+        <div><b>100</b><span class="mono">Short lessons</span></div>
+        <div><b>9</b><span class="mono">Surgery sim cases</span></div>
+        <div><b>10</b><span class="mono">Device companies</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band paper sim" id="sim">
+    <div class="wrap grid">
+      <div class="sec-h">
+        <p class="num-tag mono"><span>01</span><span>The sim</span><span>Case day, start to finish</span></p>
+        <h2 class="cond">Your first case day happens here.</h2>
+        <p>Every case runs on a clock, from the moment you badge in to the last implant logged. Each step gives you four calls. The wrong one costs minutes, and the app tells you what a veteran rep would have done.</p>
       </div>
 
-      <div class="phone" aria-label="The Reps app on a phone, showing the Learn tab">
-        <div class="scr">
-          <div class="notch"></div>
-          <div class="ph-top"><small>Learn</small><b class="wide">Your path</b></div>
-          <div class="ph-sheet">
-            <div class="mcard">
-              <div class="r1"><b>6 of 10 modules</b><span class="tier">Pro</span></div>
-              <div class="bar"><i></i></div>
-              <div class="r2"><span class="flame"><svg viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg></span>12-day streak
-                <span class="days" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i></span></div>
-            </div>
-            <div class="rdy">
-              <svg viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="gogr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#22C3EE"/></linearGradient></defs><circle class="tr" cx="26" cy="26" r="22"/><circle class="fg" cx="26" cy="26" r="22"/></svg>
-              <div><b class="num">74 readiness</b>Up 6 this week</div>
-            </div>
-            <div class="mrow done"><span class="n">5</span><div class="t"><b>Surgical technique</b>Complete</div></div>
-            <div class="mrow next"><span class="n">6</span><div class="t"><b>Fracture classification</b><span>Lesson 3 of 7</span><div class="mb"><i style="width:40%"></i></div></div></div>
-            <div class="mrow"><span class="n">7</span><div class="t"><b>Competitive selling</b>Next up</div></div>
+      <div class="sim-demo">
+        <div class="case" id="demo">
+          <div class="case-top">
+            <div><span class="mono">Step 1 of 8 &middot; Setup</span><h3>Arrive</h3></div>
+            <div><span class="clock" id="clock">07:00</span><span class="sched" id="sched">On schedule</span></div>
           </div>
-          <div class="ph-nav" aria-hidden="true"><span class="on"><i></i>Learn</span><span><i></i>Anatomy</span><span><i></i>Sim</span><span><i></i>Practice</span><span><i></i>Career</span></div>
+          <p class="scene"><span class="mono">Knee scope &middot; Dr. Nguyen &middot; OR 4</span>You arrive 30 minutes before the first case of the day. What do you do first?</p>
+          <div class="opts" id="opts">
+            <button class="opt" type="button" data-k="a"><span class="k">A</span>Wait in the lounge until the surgeon calls you</button>
+            <button class="opt" type="button" data-k="b"><span class="k">B</span>Introduce yourself to the patient and explain the products</button>
+            <button class="opt" type="button" data-k="c"><span class="k">C</span>Check in at the vendor desk, then confirm the implants and instruments on the surgeon's preference card are in the room or ready</button>
+            <button class="opt" type="button" data-k="d"><span class="k">D</span>Go into the OR and start opening implants</button>
+          </div>
+          <div class="fb" id="fb" hidden>
+            <h4 id="fb-h"></h4>
+            <p id="fb-p"></p>
+            <p class="tip"><b>Rep tip:</b> Read the preference card the night before and flag anything that is not in stock.</p>
+            <button class="again" id="again" type="button">Run it again</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="sim-notes">
+        <li><span class="mono">Clock</span><span><b>A case day, not a quiz.</b>Arrival, room setup, the procedure steps and the paperwork after. Slow calls push you behind schedule.</span></li>
+        <li><span class="mono">Cases</span><span><b>Nine arthroscopic procedures.</b>Rotator cuff, Bankart, SLAP, biceps tenodesis, meniscus, ACL, hip labrum and ankle ligament work.</span></li>
+        <li><span class="mono">Modes</span><span><b>Learn it, then test it.</b>Learn mode coaches you through. Test mode scores you, and a clean run earns a proficiency card.</span></li>
+      </ul>
+
+      <div class="sim-shots">
+        <figure><div class="phone"><img src="shot-sim-arrive.jpg" alt="The sim asks what to do first on arrival" width="585" height="1266"></div><figcaption class="mono">The call</figcaption></figure>
+        <figure><div class="phone"><img src="shot-sim-feedback.jpg" alt="Feedback for a wrong call: plus 5 minutes, with the better answer and a rep tip" width="585" height="1266"></div><figcaption class="mono">The debrief, +5 min</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band course dark" id="course">
+    <div class="wrap grid">
+      <div class="sec-h">
+        <p class="num-tag mono"><span>02</span><span>The course</span><span>12 modules</span></p>
+        <h2 class="cond">What the job assumes you already know.</h2>
+        <p>Short cards and a five-question quiz per lesson. Built to be done in the parking lot before a case.</p>
+      </div>
+      <ol class="toc">
+        <li class="free"><span class="mono">01</span>Basic anatomy</li>
+        <li><span class="mono">02</span>Surgical instruments</li>
+        <li><span class="mono">03</span>OR etiquette</li>
+        <li><span class="mono">04</span>Company product knowledge</li>
+        <li><span class="mono">05</span>Surgical technique</li>
+        <li><span class="mono">06</span>Fracture classification</li>
+        <li><span class="mono">07</span>Competitive selling</li>
+        <li><span class="mono">08</span>Sales skills</li>
+        <li><span class="mono">09</span>Business management</li>
+        <li><span class="mono">10</span>Capstone: land the job</li>
+        <li><span class="mono">11</span>Your first year as an associate rep</li>
+        <li><span class="mono">12</span>Your path in</li>
+      </ol>
+
+      <div class="anat">
+        <figure><div class="phone"><img src="shot-anatomy.jpg" alt="Shoulder anatomy plate with tappable markers" width="585" height="1266"></div></figure>
+        <div class="anat-copy">
+          <p class="mono" style="color:var(--violet-lt)">Anatomy explorer</p>
+          <h3 class="cond">Tap the labrum. Then find it again blind.</h3>
+          <p>Classic Gray's Anatomy plates and clean diagrams of the four joints you'll cover most. Tap any marker for what it is and why the surgeon cares, then switch to Find it and get quizzed on the same plate.</p>
+          <div class="joints mono"><span>Shoulder</span><span>Hip</span><span>Knee</span><span>Ankle</span></div>
+          <p class="cos mono">Product knowledge covers Stryker plus 9 other major device companies.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="strip">
-    <div class="wrap">
-      <div><b class="wide num">10</b><span>course modules</span></div>
-      <div><b class="wide num">9</b><span>arthroscopic case sims</span></div>
-      <div><b class="wide num">4</b><span>joints to explore</span></div>
-      <div><b class="wide num">9</b><span>device companies covered</span></div>
-    </div>
-  </div>
-
-  <section class="band" id="inside">
-    <div class="wrap">
-      <div class="sh">
-        <span class="eyebrow">Inside the app</span>
-        <h2 class="wide">Everything a new rep learns on the job, before the job.</h2>
-        <p>Short lessons you can finish between meetings, and practice that sticks. Five tabs, one goal: being useful in the room on day one.</p>
+  <section class="band paper career" id="career">
+    <div class="wrap grid">
+      <div class="sec-h">
+        <p class="num-tag mono"><span>03</span><span>Career</span><span>Land the job</span></p>
+        <h2 class="cond">The interview is a case too.</h2>
+        <p>Med device hiring runs in rounds, and every round gets scored. Reps walks you through each one and gives you the tools hiring managers expect to see.</p>
       </div>
-      <div class="feats">
-        <article class="feat lg">
-          <div class="ficon"><svg viewBox="0 0 24 24"><path d="M4 5h7a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4z"/><path d="M20 5h-4a2 2 0 0 0-2 2"/><path d="M20 5v12h-6"/></svg></div>
-          <h3 class="wide">Learn</h3>
-          <p>A 10-module course built from what reps actually get asked. Each lesson is a few short cards and a 5-question quiz.</p>
-          <ol class="modlist">
-            <li><b>01</b>Anatomy</li><li><b>06</b>Fracture classification</li>
-            <li><b>02</b>Instruments</li><li><b>07</b>Competitive selling</li>
-            <li><b>03</b>OR etiquette</li><li><b>08</b>Sales skills</li>
-            <li><b>04</b>Company product knowledge</li><li><b>09</b>Business management</li>
-            <li><b>05</b>Surgical technique</li><li><b>10</b>Land the job</li>
-          </ol>
-        </article>
-        <article class="feat lg">
-          <div class="ficon go"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M12 10v11M8 14h8M9 21l3-4 3 4"/></svg></div>
-          <h3 class="wide">Anatomy explorer</h3>
-          <p>Tap through the shoulder, hip, knee and ankle. Every structure is labeled and explained, with classic Gray's Anatomy plates alongside clean modern drawings.</p>
-          <div class="tags"><span>Shoulder</span><span>Hip</span><span>Knee</span><span>Ankle</span></div>
-        </article>
-        <article class="feat">
-          <div class="ficon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
-          <h3 class="wide">Surgery sim</h3>
-          <p>Run 9 arthroscopic cases. At every step, pick the instrument or implant the surgeon needs, and get scored.</p>
-        </article>
-        <article class="feat">
-          <div class="ficon hot"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg></div>
-          <h3 class="wide">Practice</h3>
-          <p>Find it, Match the product, Flashcards and Quiz. Quick reps that lock in what you learned.</p>
-        </article>
-        <article class="feat">
-          <div class="ficon go"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
-          <h3 class="wide">Career</h3>
-          <p>Help landing the job, an industry news feed, and with Pro + Mentor, a vetted ortho rep in your corner.</p>
-        </article>
+      <div class="tools">
+        <div><b>AI roleplay</b><p>Talk to a surgeon, nurse or buyer and get scored on a published rubric.</p></div>
+        <div><b>30-60-90 plan builder</b><p>Build the plan most panels ask for, score it and keep a copy.</p></div>
+        <div><b>Brag book</b><p>Your résumé, results and references in the binder hiring managers flip through.</p></div>
+        <div><b>Case coach</b><p>Rehearse your panel case presentation against the clock.</p></div>
       </div>
+      <ol class="steps">
+        <li><span class="mono">R1</span>Recruiter screen</li>
+        <li><span class="mono">R2</span>Strengths assessment</li>
+        <li><span class="mono">R3</span>Manager interviews</li>
+        <li><span class="mono">R4</span>Panel case presentation</li>
+        <li><span class="mono">R5</span>Ride-along</li>
+      </ol>
+      <figure><div class="phone"><img src="shot-career.jpg" alt="The Career tab: land the job, with the five hiring rounds and AI roleplay" width="585" height="1266"></div><figcaption class="mono">Career tab, in the app today</figcaption></figure>
     </div>
   </section>
 
-  <section class="band sim" id="sim">
-    <div class="wrap simgrid">
-      <div class="sh">
-        <span class="eyebrow">Surgery sim</span>
-        <h2 class="wide">The surgeon asks. You hand it over.</h2>
-        <p>Reading about a case is not the same as keeping up with one. The sim puts you at the back table for 9 real procedures, from rotator cuff repair to hip labral repair.</p>
-        <ul class="checks">
-          <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Every step, in order.</b> Portals, prep, anchors, fixation, close.</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Scored like the OR.</b> Speed and accuracy both count.</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Earn a proficiency card</b> for a clean run, ready to share.</span></li>
-        </ul>
-      </div>
-
-      <div class="demo" id="demo" aria-live="polite">
-        <div class="dhead">
-          <div><small>Case 2 · Shoulder</small><b>Arthroscopic Bankart repair</b></div>
-          <span class="clock" id="clock">00:42</span>
-        </div>
-        <div class="road" aria-hidden="true"><i class="past"></i><i class="past"></i><i class="on"></i><i></i><i></i><i></i></div>
-        <div class="say"><span class="av">Dr</span><div><small>Surgeon</small><span>"Labrum's mobilized and the glenoid rim is prepped. Let's get our first anchor in."</span></div></div>
-        <p class="ask">What do you hand over?</p>
-        <div class="tray" id="tray">
-          <button class="tool" data-k="screw" type="button"><span class="ti"><svg viewBox="0 0 80 40"><path d="M8 20h44M52 12l20 8-20 8z"/><path d="M14 14l4 12M22 14l4 12M30 14l4 12M38 14l4 12"/></svg></span>Interference screw</button>
-          <button class="tool" data-k="guide" type="button"><span class="ti"><svg viewBox="0 0 80 40"><path d="M6 20h50"/><path d="M56 14h10l6 6-6 6H56z"/><circle cx="14" cy="20" r="6"/></svg></span>Drill guide for a glenoid anchor</button>
-          <button class="tool" data-k="men" type="button"><span class="ti"><svg viewBox="0 0 80 40"><path d="M6 20h46c8 0 14-6 20-12"/><path d="M14 14v12"/></svg></span>Meniscal repair device</button>
-        </div>
-        <div class="fbk" id="fbk"><b>Your call.</b>Pick from the tray. In the app you would have the surgeon's preference card and a running clock.</div>
-        <button class="reset" id="reset" type="button" hidden>Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
+  <section class="band paper pricing" id="pricing" style="padding-top:0">
     <div class="wrap">
-      <div class="sh">
-        <span class="eyebrow">How it sticks</span>
-        <h2 class="wide">Built for daily reps, not one long cram.</h2>
-      </div>
-      <div class="engine">
-        <div class="eng"><span class="k wide">Streaks</span><h3>Show up every day</h3><p>A few minutes a day builds a streak. Miss one and a streak freeze keeps your run alive.</p></div>
-        <div class="eng"><span class="k wide">Review</span><h3>See it again before you forget</h3><p>Questions you missed come back at the right time, so the hard material gets the most practice.</p></div>
-        <div class="eng"><span class="k wide">Readiness</span><h3>Know when you're ready</h3><p>One score pulls your lessons, quizzes and sim results together, so you know when to start interviewing.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" style="padding-top:0">
-    <div class="wrap">
-      <div class="sh">
-        <span class="eyebrow">Who it's for</span>
-        <h2 class="wide">For anyone trying to get in, and anyone just in.</h2>
-      </div>
-      <div class="who">
-        <div><b>Career changers</b><p>Coming from another sales job, athletics or the military, and need to speak the language before the interview.</p></div>
-        <div><b>New associate reps</b><p>Just hired and about to cover cases. Learn the trays, the steps and the etiquette before your first one.</p></div>
-        <div><b>Students and grads</b><p>Exercise science, kinesiology or pre-med, and aiming for a territory instead of med school.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="pricing" style="padding-top:0">
-    <div class="wrap">
-      <div class="sh">
-        <span class="eyebrow">Pricing</span>
-        <h2 class="wide">Start free. Go Pro when you're serious.</h2>
-        <p>Training a whole sales team? Teams gives managers the tools to onboard every new rep.</p>
-      </div>
-      <div class="bill" role="group" aria-label="Billing period">
-        <button type="button" id="bill-y" aria-pressed="true">Yearly <span>Save 43%</span></button>
-        <button type="button" id="bill-m" aria-pressed="false">Monthly</button>
-      </div>
-      <div class="tiers">
-        <div class="tier">
-          <h3 class="wide">Free</h3>
-          <div class="price"><b class="wide num">$0</b><span>forever</span></div>
-          <p>Get a real feel for the course and the sim.</p>
-          <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>The first course module</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>One full surgery sim</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Daily streaks</li></ul>
-          <a class="btn ghost" href="#start">Start free</a>
+      <div class="head">
+        <div class="sec-h">
+          <p class="num-tag mono"><span>04</span><span>Pricing</span><span></span></p>
+          <h2 class="cond">Start free. Pay when you're serious.</h2>
         </div>
-        <div class="tier feat-tier">
-          <span class="flag">Best value</span>
-          <h3 class="wide">Pro</h3>
-          <div class="price"><b class="wide num" id="pro-price">$199</b><span id="pro-per">/ year</span></div>
-          <p id="pro-note">Works out to about $16.58 a month. Or pay $29 monthly.</p>
-          <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Everything unlocked</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>All 10 modules and quizzes</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>All 9 surgery sims</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Practice, review and readiness score</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Proficiency cards</li></ul>
-          <a class="btn primary" href="#start" id="pro-cta">Get Pro yearly</a>
+        <div class="bill" role="group" aria-label="Billing period for Pro">
+          <button type="button" id="bill-y" aria-pressed="true">Yearly <em>&minus;43%</em></button>
+          <button type="button" id="bill-m" aria-pressed="false">Monthly</button>
         </div>
-        <div class="tier">
-          <h3 class="wide">Pro + Mentor</h3>
-          <div class="price"><b class="wide num">$99</b><span>/ month</span></div>
-          <p>Pro, plus a rep in the field in your corner.</p>
-          <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Everything in Pro</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Two 30-minute calls a month with a vetted current or former ortho rep</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Résumé and interview prep</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Mock case coverage</li></ul>
-          <a class="btn ghost" href="#start">Get a mentor</a>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="tag"><span class="mono">Try it</span></div>
+          <h3>Free</h3>
+          <div class="price"><b>$0</b><span>forever</span></div>
+          <p class="note">See if the work fits you.</p>
+          <ul><li>The first module: Basic anatomy</li><li>One full surgery sim case</li><li>Daily streaks</li></ul>
+          <a class="btn line" href="#start">Start free</a>
         </div>
-        <div class="tier">
-          <h3 class="wide">Teams</h3>
-          <div class="price"><b class="wide num">$49</b><span>per rep / month, billed yearly</span></div>
-          <p>For device companies and distributors onboarding new reps. 5 seat minimum.</p>
-          <ul><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Everything in Pro for every rep</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Company-assigned learning paths</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Custom modules for your own products</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Manager dashboard: progress, quiz scores, sim results and readiness</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Assignments with due dates and reminders</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Alerts when a rep falls behind or is ready</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Exportable onboarding reports</li></ul>
-          <p class="vol">About $39 per rep at 25+ seats. Custom pricing for 100+. Free 30-day pilot for one team.</p>
-          <a class="btn ghost" href="#teams-demo">Book a demo</a>
+        <div class="plan pick">
+          <div class="tag"><span class="mono">Best value</span></div>
+          <h3>Pro</h3>
+          <div class="price"><b id="pro-price">$199</b><span id="pro-per">/ year</span></div>
+          <p class="note" id="pro-note">About $16.58 a month. Or $29 monthly.</p>
+          <ul><li>Everything unlocked</li><li>All 12 modules and quizzes</li><li>All 9 surgery sims and proficiency cards</li><li>Practice, review and readiness score</li><li>Career tools</li></ul>
+          <a class="btn go" href="#start" id="pro-cta">Get Pro yearly</a>
+        </div>
+        <div class="plan">
+          <div class="tag"><span class="mono">With a mentor</span></div>
+          <h3>Pro + Mentor</h3>
+          <div class="price"><b>$99</b><span>/ month</span></div>
+          <p class="note">Pro, plus a rep in your corner.</p>
+          <ul><li>Everything in Pro</li><li>Two 30-minute calls a month with a vetted current or former ortho rep</li><li>Résumé and interview prep</li><li>Mock case coverage</li></ul>
+          <a class="btn line" href="#start">Get a mentor</a>
+        </div>
+        <div class="plan">
+          <div class="tag"><span class="mono">For companies</span></div>
+          <h3>Teams</h3>
+          <div class="price"><b>$49</b><span>per rep / mo, billed yearly</span></div>
+          <p class="note">Onboard new reps on your products. 5 seat minimum.</p>
+          <ul><li>Everything in Pro for every rep</li><li>Company-assigned learning paths</li><li>Custom modules for your products</li><li>Manager dashboard: progress, quiz scores, sim results, readiness</li><li>Assignments with due dates and reminders</li><li>Alerts when a rep falls behind or is ready</li><li>Exportable onboarding reports</li></ul>
+          <p class="vol">About $39 / rep at 25+ seats<br>Custom pricing at 100+<br>Free 30-day pilot for one team</p>
+          <a class="btn line" href="#teams">Book a demo</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="teams-demo" style="padding-top:0">
-    <div class="wrap">
-      <div class="demo-box">
-        <div>
-          <span class="eyebrow">Reps for Teams</span>
-          <h2 class="wide">See it with your own team.</h2>
-          <p>We'll walk you through the manager dashboard and set up a free 30-day pilot for one team.</p>
-        </div>
-        <form id="dm" novalidate>
-          <label for="dm-name">Your name<input id="dm-name" autocomplete="name" required></label>
-          <label for="dm-email">Work email<input id="dm-email" type="email" autocomplete="email" required></label>
-          <label for="dm-co">Company<input id="dm-co" autocomplete="organization" required></label>
-          <label for="dm-size">Reps to train<select id="dm-size"><option>5 to 24</option><option>25 to 99</option><option>100 or more</option></select></label>
-          <button class="btn primary" type="submit">Book a demo</button>
-          <p class="msg" id="dm-msg" role="status"></p>
-        </form>
+  <section class="band teams dark" id="teams">
+    <div class="wrap grid">
+      <div class="sec-h">
+        <p class="num-tag mono"><span>05</span><span>Reps for Teams</span><span></span></p>
+        <h2 class="cond">Know who's ready to cover a case.</h2>
+        <p>Assign paths, add your own product modules, and see every new rep's quiz scores, sim results and readiness on one dashboard. We'll set up a free 30-day pilot for one team.</p>
       </div>
+      <form id="dm" novalidate>
+        <label for="dm-name"><span class="mono">Your name</span><input id="dm-name" autocomplete="name" required></label>
+        <label for="dm-email"><span class="mono">Work email</span><input id="dm-email" type="email" autocomplete="email" required></label>
+        <label for="dm-co"><span class="mono">Company</span><input id="dm-co" autocomplete="organization" required></label>
+        <label for="dm-size"><span class="mono">Reps to train</span><select id="dm-size"><option>5 to 24</option><option>25 to 99</option><option>100 or more</option></select></label>
+        <button class="btn go" type="submit">Book a demo</button>
+        <p class="msg" id="dm-msg" role="status"></p>
+      </form>
     </div>
   </section>
 
-  <section class="band" id="faq" style="padding-top:0">
-    <div class="wrap">
-      <div class="sh"><span class="eyebrow">Questions</span><h2 class="wide">Good to know</h2></div>
-      <div class="faq">
-        <details><summary>Do I need a medical background?</summary><p>No. The course starts with the anatomy and terminology you need and builds from there. Plenty of great reps came from sales, sports or the military.</p></details>
-        <details><summary>Is this only for sports medicine?</summary><p>The course covers orthopedics broadly: trauma, joints, fracture classification and company product lines. The surgery sim focuses on arthroscopic sports medicine cases, the most common place new reps start.</p></details>
-        <details><summary>Does it work on my phone?</summary><p>Yes. Reps is built phone first, so you can do a lesson in the parking lot before a case. It works on a laptop too.</p></details>
+  <section class="band paper faq" id="faq">
+    <div class="wrap grid">
+      <div class="sec-h">
+        <p class="num-tag mono"><span>06</span><span>Questions</span><span></span></p>
+        <h2 class="cond">Before you sign up.</h2>
+      </div>
+      <div class="qa">
+        <details><summary>Do I need a medical background?</summary><p>No. Module one starts with the anatomy and vocabulary, and everything builds from there. Plenty of strong reps came from sales, sports or the military.</p></details>
+        <details><summary>Is it only sports medicine?</summary><p>The course covers orthopedics broadly: trauma, joints, fracture classification and the major companies' product lines. The surgery sim focuses on arthroscopic sports medicine cases, where many new reps start.</p></details>
         <details><summary>Can I cancel Pro?</summary><p>Yes. Pro is a subscription, monthly or yearly, and you can cancel any time. You keep access until the end of the period you paid for.</p></details>
-        <details><summary>What do I get with a mentor?</summary><p>Pro + Mentor pairs you with a current or former orthopedic rep, vetted by us. You get two 30-minute calls a month, help with your résumé and interviews, and mock case coverage so you can practice working a case with someone who has done the job.</p></details>
+        <details><summary>What do I get with a mentor?</summary><p>Pro + Mentor pairs you with a current or former orthopedic rep, vetted by us. You get two 30-minute calls a month, help with your résumé and interviews, and mock case coverage so you can practice a case with someone who has done the job.</p></details>
         <details><summary>How does Reps for Teams work?</summary><p>Managers assign learning paths, add modules on their own products and track every rep's progress, quiz scores, sim results and readiness from one dashboard. Teams start at 5 seats, and one team can pilot it free for 30 days.</p></details>
-        <details><summary>Is Reps affiliated with any device company?</summary><p>No. Reps is independent. The product knowledge module teaches you about major manufacturers so you can talk confidently about any of them.</p></details>
+        <details><summary>Is Reps affiliated with a device company?</summary><p>No. Reps is independent. The product knowledge module teaches you about the major manufacturers so you can talk about any of them.</p></details>
       </div>
     </div>
   </section>
 
-  <section id="start" class="wrap">
-    <div class="cta">
-      <div>
-        <h2 class="wide">Your first case is closer than you think.</h2>
-        <p>Join the list and we'll send your access to the free preview.</p>
-      </div>
+  <section class="band close" id="start">
+    <div class="wrap grid">
+      <h2 class="cond">First case is <span>07:30.</span> Be ready.</h2>
       <form id="wl" novalidate>
-        <label for="wl-email">Email address</label>
-        <div class="frow"><input id="wl-email" type="email" autocomplete="email" placeholder="you@example.com" required><button type="submit">Join</button></div>
+        <label class="mono" for="wl-email">Get the free preview</label>
+        <div class="frow"><input id="wl-email" type="email" autocomplete="email" placeholder="you@example.com" required><button class="btn go" type="submit">Join</button></div>
         <p class="msg" id="wl-msg" role="status"></p>
       </form>
     </div>
@@ -542,64 +539,60 @@ footer nav a{text-decoration:none;color:var(--soft)}
 
 <footer>
   <div class="wrap">
-    <div>
-      <a class="logo wide" href="#top"><img src="icon-180.png" alt="" width="28" height="28">Reps</a>
-      <p>Reps is an independent training product. It is not affiliated with or endorsed by any medical device manufacturer named in the course. Company and product names belong to their owners.</p>
-    </div>
-    <nav aria-label="Footer"><a href="#inside">Inside the app</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <a class="mark" href="#top"><img src="icon-180.png" alt="" width="26" height="26">Reps</a>
+    <p>Reps is an independent training product. It is not affiliated with or endorsed by any medical device manufacturer named in the course. Company and product names belong to their owners.</p>
+    <nav class="mono" aria-label="Footer"><a href="#sim">The sim</a><a href="#pricing">Pricing</a><a href="#teams">Teams</a><a href="#faq">FAQ</a></nav>
   </div>
 </footer>
 
 <script>
 (function(){
-  var tray=document.getElementById('tray'), fbk=document.getElementById('fbk'), reset=document.getElementById('reset'), clock=document.getElementById('clock');
-  var msgs={
-    guide:['Right call.','The surgeon drills the glenoid rim through the guide, then places the first suture anchor low on the face, around the 5:30 position on a right shoulder. Next comes passing the suture through the labrum.'],
-    screw:['Not this one.','Interference screws fix a graft in a bone tunnel, like an ACL repair or a biceps tenodesis. A Bankart repair reattaches the labrum with suture anchors.'],
-    men:['Not this one.','That device repairs a torn meniscus in the knee. For a Bankart, the surgeon needs to place suture anchors in the glenoid.']
-  };
-  var t=42, timer=null, done=false;
-  function fmt(s){return '00:'+(s<10?'0':'')+s}
-  function tick(){ if(done) return; t=Math.min(t+1,59); clock.textContent=fmt(t); }
-  try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(tick,1000); }catch(e){}
-  tray.addEventListener('click',function(e){
-    var b=e.target.closest('.tool'); if(!b||done) return;
-    var k=b.dataset.k, ok=k==='guide', m=msgs[k];
-    b.classList.add(ok?'right':'wrong');
-    fbk.className='fbk '+(ok?'good':'bad');
-    fbk.innerHTML='<b>'+m[0]+'</b>'+m[1];
-    if(ok){ done=true; tray.querySelectorAll('.tool').forEach(function(x){x.disabled=true; if(x!==b) x.classList.add('dim');}); }
-    else { b.disabled=true; }
-    reset.hidden=false;
+  var opts=document.getElementById('opts'), fb=document.getElementById('fb'), fbh=document.getElementById('fb-h'), fbp=document.getElementById('fb-p'),
+      clock=document.getElementById('clock'), sched=document.getElementById('sched'), again=document.getElementById('again');
+  var mins=0;
+  var why='Hospitals require vendors to check in, usually through a credentialing system. Confirming the preference-card items before the patient rolls in prevents delays. Opening implants is the staff’s job, on the surgeon’s request, and reps do not discuss products with patients in pre-op.';
+  function setClock(){ var m=mins; clock.textContent='07:'+(m<10?'0':'')+m; sched.textContent=m>3?'Behind schedule':'On schedule'; sched.className='sched'+(m>3?' late':''); }
+  opts.addEventListener('click',function(e){
+    var b=e.target.closest('.opt'); if(!b||b.disabled) return;
+    var ok=b.dataset.k==='c';
+    b.classList.add(ok?'right':'wrong'); b.disabled=true;
+    if(ok){
+      mins+=2; opts.querySelectorAll('.opt').forEach(function(x){ if(x!==b){x.disabled=true; if(!x.classList.contains('wrong')) x.classList.add('dim');} });
+      fb.className='fb ok'; fbh.innerHTML='Good call <span class="pen">+2 min</span>';
+      fbp.textContent=why;
+    } else {
+      mins+=5; fb.className='fb'; fbh.innerHTML='Not the best call <span class="pen">+5 min</span>';
+      fbp.textContent='Better: check in at the vendor desk, then confirm the implants and instruments on the surgeon’s preference card. '+why;
+    }
+    setClock(); fb.hidden=false;
   });
-  reset.addEventListener('click',function(){
-    done=false; t=42; clock.textContent=fmt(t);
-    tray.querySelectorAll('.tool').forEach(function(x){x.disabled=false; x.className='tool';});
-    fbk.className='fbk'; fbk.innerHTML='<b>Your call.</b>Pick from the tray. In the app you would have the surgeon’s preference card and a running clock.';
-    reset.hidden=true;
+  again.addEventListener('click',function(){
+    mins=0; setClock(); fb.hidden=true;
+    opts.querySelectorAll('.opt').forEach(function(x){x.disabled=false; x.className='opt';});
   });
 
-  var f=document.getElementById('wl'), em=document.getElementById('wl-email'), msg=document.getElementById('wl-msg');
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var v=em.value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ msg.textContent='Enter an email address like you@example.com.'; em.focus(); return; }
-    msg.textContent='Thanks! This is a preview of the site, so sign-ups are not saved yet.';
-    em.value='';
-  });
   var by=document.getElementById('bill-y'), bm=document.getElementById('bill-m');
-  function bill(y){ by.setAttribute('aria-pressed',y); bm.setAttribute('aria-pressed',!y);
+  function bill(y){
+    by.setAttribute('aria-pressed',y); bm.setAttribute('aria-pressed',!y);
     document.getElementById('pro-price').textContent=y?'$199':'$29';
     document.getElementById('pro-per').textContent=y?'/ year':'/ month';
-    document.getElementById('pro-note').textContent=y?'Works out to about $16.58 a month. Or pay $29 monthly.':'Cancel any time. Switch to yearly for $199 and save 43%.';
-    document.getElementById('pro-cta').textContent=y?'Get Pro yearly':'Get Pro monthly'; }
+    document.getElementById('pro-note').textContent=y?'About $16.58 a month. Or $29 monthly.':'Cancel any time. $199 yearly saves 43%.';
+    document.getElementById('pro-cta').textContent=y?'Get Pro yearly':'Get Pro monthly';
+  }
   by.addEventListener('click',function(){bill(true)}); bm.addEventListener('click',function(){bill(false)});
+
+  var EM=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var dm=document.getElementById('dm'), dmm=document.getElementById('dm-msg');
   dm.addEventListener('submit',function(e){ e.preventDefault();
     var n=document.getElementById('dm-name').value.trim(), m=document.getElementById('dm-email').value.trim(), c=document.getElementById('dm-co').value.trim();
-    if(!n||!c||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){ dmm.textContent='Fill in your name, work email and company.'; return; }
-    dmm.textContent='Thanks, '+n+'! This is a preview of the site, so demo requests are not sent yet.'; dm.reset(); });
+    if(!n||!c||!EM.test(m)){ dmm.textContent='Fill in your name, work email and company.'; return; }
+    dmm.textContent='Thanks, '+n+'. This is a preview of the site, so demo requests are not sent yet.'; dm.reset(); });
+  var wl=document.getElementById('wl'), em=document.getElementById('wl-email'), wm=document.getElementById('wl-msg');
+  wl.addEventListener('submit',function(e){ e.preventDefault();
+    if(!EM.test(em.value.trim())){ wm.textContent='Enter an email address like you@example.com.'; em.focus(); return; }
+    wm.textContent='Thanks! This is a preview of the site, so sign-ups are not saved yet.'; em.value=''; });
 })();
 </script>
 
-</body></html>
+</body>
+</html>
